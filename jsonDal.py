@@ -34,29 +34,17 @@ class JsonDal(object):
         wp = self.jsonData["web-app"]
         servlet = wp["servlet"]
 
-        iprmFlag = 0
-
         for sln in servlet:
             if psln == sln["servlet-name"]:
-                #servletdetails = "servlet-name is : " + sln["servlet-name"] + " " + \
-                                 #"servlet-class is : " + sln["servlet-class"] + \
-                                 #"\ninit-params are : "
 
                 for subkey, value in sln["init-param"].iteritems():
 
                     if subkey == iprm:
-                        iprmFlag = 1
-                        return iprmFlag
+                        return value
 
-                #if iprmFlag == 1:
-                    #print servletdetails
-                    #for subkey, value in sln["init-param"].iteritems():
-                    #    print subkey, value
-                #else:
-                    #print 'not found..'
-        #if iprmFlag == 0:
-            #print 'not found..'
-        return iprmFlag
+                return 'init-param parameter not found\n'
+
+        return 'servlet-name parameter not found\n'
 
     def printJson(self):
 
