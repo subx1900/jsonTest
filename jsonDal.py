@@ -30,7 +30,7 @@ class JsonDal(object):
             else:
                 print 'not found..'
 
-    def getByServletNameAndIparamVal(self, psln, iprm):
+    def searchServletNameAndIparamVal(self, psln, iprm):
         wp = self.jsonData["web-app"]
         servlet = wp["servlet"]
 
@@ -38,23 +38,25 @@ class JsonDal(object):
 
         for sln in servlet:
             if psln == sln["servlet-name"]:
-                servletdetails = "servlet-name is : " + sln["servlet-name"] + " " + \
-                                 "servlet-class is : " + sln["servlet-class"] + \
-                                 "\ninit-params are : "
+                #servletdetails = "servlet-name is : " + sln["servlet-name"] + " " + \
+                                 #"servlet-class is : " + sln["servlet-class"] + \
+                                 #"\ninit-params are : "
 
                 for subkey, value in sln["init-param"].iteritems():
 
-                    if value == iprm:
+                    if subkey == iprm:
                         iprmFlag = 1
+                        return iprmFlag
 
-                if iprmFlag == 1:
-                    print servletdetails
-                    for subkey, value in sln["init-param"].iteritems():
-                        print subkey, value
-                else:
-                    print 'not found..'
-        if iprmFlag == 0:
-            print 'not found..'
+                #if iprmFlag == 1:
+                    #print servletdetails
+                    #for subkey, value in sln["init-param"].iteritems():
+                    #    print subkey, value
+                #else:
+                    #print 'not found..'
+        #if iprmFlag == 0:
+            #print 'not found..'
+        return iprmFlag
 
     def printJson(self):
 
