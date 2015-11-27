@@ -1,6 +1,9 @@
 from jsonDal import JsonDal
 
 myJsonRun = JsonDal()
-myJsonRun.getByServletName("cofaxCDS")
-myJsonRun.getByServletNameAndIparamVal("cofaxTools", "toolstemplates/")
+
+res = myJsonRun.ServletNameAndIparamValExist("cofaxTools", "removePageCache")
+
+print res
+
 #myJsonRun.printJson()
