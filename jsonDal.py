@@ -30,7 +30,7 @@ class JsonDal(object):
             else:
                 print 'not found..'
 
-    def searchServletNameAndIparamVal(self, psln, iprm):
+    def ServletNameAndIparamValExist(self, psln, iprm):
         wp = self.jsonData["web-app"]
         servlet = wp["servlet"]
 
